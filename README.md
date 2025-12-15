@@ -200,4 +200,4 @@
 - 主な使用Gem（active_storage / stimulus-rails / turbo-rails）
 
 ### 画面遷移図
-Figma：https://www.figma.com/design/x0kNGHx0ecsPExpvkl3pbX/omoino-take---Screen-Flows?node-id=0-1&t=ZrNnVgED78STmhBM-1
+[Figmaで画面遷移を表示](https://www.figma.com/design/x0kNGHx0ecsPExpvkl3pbX/omoino-take---Screen-Flows?node-id=0-1&t=ZrNnVgED78STmhBM-1)
