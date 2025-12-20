@@ -248,7 +248,7 @@
   - UI表示例：`連続利用：5日目`
 
 ## 使用する技術スタック
-- 使用するフレームワーク（Ruby on Rails / 7.2.1）
+- 使用するフレームワーク（Ruby on Rails / 7.2.3）
 - データベース（PostgreSQL）
 - デプロイ先（Render）
 - 主な使用Gem（active_storage / stimulus-rails / turbo-rails）
