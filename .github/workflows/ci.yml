@@ -63,6 +63,8 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=5s
@@ -84,7 +86,7 @@ jobs:
 
       - name: Check docker port mapping
         run: docker ps
-        
+
       - name: Wait for Postgres to be ready
         run: |
           echo "Initial wait..."
