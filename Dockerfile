@@ -8,7 +8,7 @@ RUN apt-get update -qq && \
 WORKDIR /app
 
 # Gemfile をコピーして bundle install
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 RUN gem install bundler && bundle install
 
 # アプリケーション全体をコピー
