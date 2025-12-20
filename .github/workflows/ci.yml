@@ -84,14 +84,14 @@ jobs:
       - name: Wait for Postgres to be ready
         run: |
           echo "Initial wait..."
-          sleep 15
-          for i in $(seq 1 180); do
+          sleep 30
+          for i in $(seq 1 300); do
             if pg_isready -h postgres -U postgres; then
               echo "Postgres is ready"
               exit 0
             fi
-            echo "Waiting for Postgres... ($i/180)"
-            sleep 1
+            echo "Waiting for Postgres... ($i/300)"
+            sleep 2
           done
           echo "Postgres did not become ready in time"
           exit 1
