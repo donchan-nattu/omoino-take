@@ -82,6 +82,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Check docker port mapping
+        run: docker ps
+        
       - name: Wait for Postgres to be ready
         run: |
           echo "Initial wait..."
