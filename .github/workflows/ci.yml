@@ -87,7 +87,7 @@ jobs:
           echo "Initial wait..."
           sleep 30
           for i in $(seq 1 300); do
-            if pg_isready -h postgres -U postgres; then
+            if pg_isready -h localhost -U postgres; then
               echo "Postgres is ready"
               exit 0
             fi
@@ -101,14 +101,14 @@ jobs:
 
       - name: Create test database
         run: |
-          psql -h postgres -U postgres -c 'CREATE DATABASE app_test;'
+          psql -h localhost -U postgres -c 'CREATE DATABASE app_test;'
         env:
           PGPASSWORD: postgres
 
       - name: Run tests
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@postgres:5432/app_test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/app_test
           PGPASSWORD: postgres
         run: bin/rails db:test:prepare test test:system
 
