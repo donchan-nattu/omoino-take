@@ -58,19 +58,16 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:15
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-        ports:
-          - 5432:5432
-        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      # redis:
-      #   image: redis
-      #   ports:
-      #     - 6379:6379
-      #   options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+        # ポート公開は不要（衝突の原因になる）
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
 
     steps:
       - name: Install packages
@@ -84,24 +81,10 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-      
-      - name: Create test database
+
+      - name: Wait for Postgres to be ready
         run: |
-          psql -h localhost -U postgres -c 'CREATE DATABASE app_test;'
-        env:
-          PGPASSWORD: postgres
-
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/app_test
-          # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test test:system
-
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
+          for i in $(seq 1 60); do
+            if pg_isready -h postgres -U postgres; then
+              echo "Postgres is ready"
+              exit 0
