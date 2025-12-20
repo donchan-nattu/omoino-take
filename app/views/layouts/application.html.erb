@@ -1,23 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "App" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<header class="app-header">
+  <!-- 上段：アプリ情報 -->
+  <div class="header-top">
+    <div class="status-icons">
+      <!-- 燃やせる竹（仮アイコン10個） -->
+      <div class="bamboo-icons">
+        <% 10.times do %>
+          <span class="icon">🎋</span>
+        <% end %>
+      </div>
 
-    <%= yield :head %>
+      <!-- 焚き火レベル（仮アイコン10個） -->
+      <div class="fire-level-icons">
+        <% 10.times do %>
+          <span class="icon">🔥</span>
+        <% end %>
+      </div>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+      <!-- 累計日数（仮） -->
+      <div class="total-days">
+        <span>累計日数: 123日</span>
+      </div>
+    </div>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+    <!-- 設定アイコン -->
+    <div class="settings-icon">
+      <span>⚙️</span>
+    </div>
+  </div>
+
+  <!-- 下段：リンク -->
+  <div class="header-bottom">
+    <nav class="header-links">
+      <%= link_to "利用規約", "#" %>
+      <%= link_to "プライバシーポリシー", "#" %>
+      <%= link_to "お問合せ", "#" %>
+    </nav>
+  </div>
+</header>
