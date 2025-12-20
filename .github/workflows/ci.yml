@@ -88,3 +88,11 @@ jobs:
             if pg_isready -h postgres -U postgres; then
               echo "Postgres is ready"
               exit 0
+            fi
+            echo "Waiting for Postgres... ($i/60)"
+            sleep 1
+          done
+          echo "Postgres did not become ready in time"
+          exit 1
+        env:
+          PGPASSWORD: postgres
