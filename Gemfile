@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.2.2"
 
 # Rails 本体
-gem "rails", "~> 7.2.3"
+gem "rails", "~> 8.1.1"
 
 # DB
 gem "pg", "~> 1.1"
