@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # サーバー起動コマンド
-CMD RAILS_ENV=production bundle exec rails db:migrate && RAILS_ENV=production bundle exec rails server -b 0.0.0.0 -p 10000
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
