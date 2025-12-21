@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_21_065732) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_21_072755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_21_065732) do
     t.index ["session_id"], name: "index_burn_events_on_session_id"
   end
 
+  create_table "session_stats", force: :cascade do |t|
+    t.bigint "session_id", null: false
+    t.integer "burn_count", default: 0, null: false
+    t.integer "total_days", default: 0, null: false
+    t.datetime "last_used_at"
+    t.integer "growth_value", default: 0, null: false
+    t.integer "flame_level", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_session_stats_on_session_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_token", null: false
     t.datetime "created_at", null: false
@@ -60,4 +72,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_21_065732) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "burn_events", "sessions"
+  add_foreign_key "session_stats", "sessions"
 end

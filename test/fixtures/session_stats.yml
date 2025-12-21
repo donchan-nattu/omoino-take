@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session: one
+  burn_count: 1
+  total_days: 1
+  last_used_at: 2025-12-21 07:27:55
+  growth_value: 1
+  flame_level: 1
+
+two:
+  session: two
+  burn_count: 1
+  total_days: 1
+  last_used_at: 2025-12-21 07:27:55
+  growth_value: 1
+  flame_level: 1
