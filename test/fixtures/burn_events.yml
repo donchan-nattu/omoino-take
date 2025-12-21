@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session: one
+  burned_at: 2025-12-21 06:57:32
+
+two:
+  session: two
+  burned_at: 2025-12-21 06:57:32
