@@ -12,8 +12,8 @@ development:
 
 test:
   <<: *default
-  host: postgres        # CI 用に上書き
-  password: postgres    # CI のパスワードに合わせる
+  host: postgres_db
+  password: password
   database: app_test
 
 production:
