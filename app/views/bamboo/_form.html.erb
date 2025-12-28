@@ -1,0 +1,25 @@
+<h1 class="text-xl font-bold mb-4">思いのたけをつづる</h1>
+
+<%= form_with model: @bamboo, url: bamboo_index_path, local: true do |f| %>
+
+  <% if @bamboo.errors.any? %>
+    <div class="mb-4 text-red-600">
+      <ul>
+        <% @bamboo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= f.label :content, "あなたの「思いのたけ」をつづってください" %><br>
+    <%= f.text_area :content, rows: 6, class: "w-full border p-2" %>
+  </div>
+
+  <div class="flex gap-4 mt-4">
+    <%= f.submit "焚き火にくべる", class: "btn btn-primary" %>
+    <%= link_to "戻る", root_path, class: "btn btn-secondary" %>
+  </div>
+
+<% end %>
